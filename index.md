@@ -1,85 +1,102 @@
 # OpenLane Guide — Repository Index
 
-This repository must be read **in order**.
+This repository **must be read in order**.  
 It is intentionally strict.
+
+If you jump around, you will recreate the same failures this guide exists to prevent.
 
 ---
 
-## Phase 1 — Environment Survival
+## Phase 1 — Environment Survival (Mandatory)
 
-01. `01_WSL_Docker_Setup.md`  
-WSL2 and Docker done correctly, with export/import survivability.
+01. [01_WSL_Docker_Setup.md](./01_WSL_Docker_Setup.md)  
+WSL2 + Docker Desktop configured for stability and export/import survivability.
 
-02. `02_OpenLane1_Setup.md`  
-Install and freeze OpenLane1. This is the production flow.
+02. [02_OpenLane1_Setup.md](./02_OpenLane1_Setup.md)  
+Install and **freeze** OpenLane1 (Makefile-based). This is the **production** flow.
 
-03. `03_OpenLane2_Setup.md`  
-OpenLane2 setup for evaluation only. Never mix.
+03. [03_OpenLane2_Setup.md](./03_OpenLane2_Setup.md)  
+Install OpenLane2 for **evaluation only**. Strict isolation. **Never mix with OpenLane1.**
 
-04. `04_PDK_Setup.md`  
-sky130 / gf180 PDK as an asset. Built once. Never rebuilt.
+04. [04_PDK_Setup.md](./04_PDK_Setup.md)  
+PDK is the asset. Pin the version. Keep it in one place. **Build once. Never rebuild casually.**
 
-05. `05_Verification_Test.md`  
-Smoke tests. Proof that the environment is real.
+05. [05_Verification_Test.md](./05_Verification_Test.md)  
+Smoke tests proving the environment, PDK, and toolchain are correct.
 
-06. `06_Migration_WSL_Export.md`  
-Disaster recovery. Hardware failure becomes irrelevant.
+06. [06_Migration_WSL_Export.md](./06_Migration_WSL_Export.md)  
+Disaster recovery via WSL export/import. Hardware failure becomes irrelevant.
 
-07. `07_Troubleshooting.md`  
-Failure prevention checklist. Not a fix guide.
+07. [07_Troubleshooting.md](./07_Troubleshooting.md)  
+Failure prevention checklist. This is **not** a fix-it guide.
 
 ---
 
 ## Phase 2 — Physical Design Reality
 
-08. `08_Placement.md`  
-Global vs detailed placement. Density and convergence.
+08. [08_Placement.md](./08_Placement.md)  
+Placement fundamentals: density, legalization, convergence.
 
-09. `09_CTS.md`  
-Clock Tree Synthesis. Skew and insertion delay.
+09. [09_CTS.md](./09_CTS.md)  
+Clock Tree Synthesis: skew, insertion delay, and downstream impact.
 
-10. `10_Routing.md`  
-Global and detailed routing. Congestion and DRC.
+10. [10_Routing.md](./10_Routing.md)  
+Global and detailed routing: congestion, DRC pressure, failure points.
 
-11. `11_DRC_LVS.md`  
-Magic DRC and Netgen LVS. What “clean” actually means.
+11. [11_STA.md](./11_STA.md)  
+Static Timing Analysis: WNS/TNS, setup/hold, uncertainty, interpretation.
 
-12. `12_STA.md`  
-OpenSTA. WNS, TNS, setup and hold.
+12. [12_GLS.md](./12_GLS.md)  
+Gate-level simulation without SDF: what it proves and what it hides.
 
-13. `13_GDS_Signoff.md`  
-Final deliverables: GDS, LEF, SPEF, SDF, SPICE.
-
----
-
-## Phase 3 — Integration and Verification
-
-14. `14_Caravel_Hardening.md`  
-User project integration and MPW preparation.
-
-15. `15_GLS.md`  
-Gate-level simulation. Functional and SDF.
-
-16. `16_EndToEnd_Exercise.md`  
-RTL → GDS → GLS → Caravel, end-to-end.
+13. [13_SDF_GLS.md](./13_SDF_GLS.md)  
+SDF-annotated GLS: timing becomes behavior.
 
 ---
 
-## Appendices — Hard-earned knowledge
+## Phase 3 — Integration and Timing Truth
 
-- `APPENDIX_GLS_Failure_Patterns.md`
-- `APPENDIX_Magic_KLayout.md`
-- `APPENDIX_GDS_Analysis.md`
-- `APPENDIX_OpenROAD_Failures.md`
-- `APPENDIX_Layer_Mapping.md`
+14. [14_OpenROAD_STA.md](./14_OpenROAD_STA.md)  
+Using OpenROAD and STA together without dead ends.
+
+15. [15_Routing_and_Congestion.md](./15_Routing_and_Congestion.md)  
+Congestion analysis and routing strategy.
+
+16. [16_GLS_and_SDF.md](./16_GLS_and_SDF.md)  
+RTL vs GLS vs SDF-GLS: what “matches” actually means.
+
+17. [17_Magic_KLayout_Reality_Check.md](./17_Magic_KLayout_Reality_Check.md)  
+What layout viewers show—and what they never will.
+
+18. [18_STA_Reality_and_Timing_Closure.md](./18_STA_Reality_and_Timing_Closure.md)  
+Timing closure mindset and rollback discipline.
+
+19. [19_GLS_SDF_Timing.md](./19_GLS_SDF_Timing.md)  
+Timing failure signatures visible only in waveforms.
+
+20. [20_Environment_Failure_Model.md](./20_Environment_Failure_Model.md)  
+Why OpenLane environments collapse in practice.
+
+21. [21_Final_Rules_of_Survival.md](./21_Final_Rules_of_Survival.md)  
+Non-negotiable rules for long-term survival.
 
 ---
 
-## Final warning
+## Appendices — Hard-Earned Knowledge
 
-This repository is not friendly.
-It is not flexible.
+- [APPENDIX_GLS_Failure_Patterns.md](./APPENDIX_GLS_Failure_Patterns.md)  
+- [APPENDIX_PDK_Mismatch_Anatomy.md](./APPENDIX_PDK_Mismatch_Anatomy.md)  
+- [APPENDIX_OpenLane1_vs_OpenLane2_Separation.md](./APPENDIX_OpenLane1_vs_OpenLane2_Separation.md)  
+- [APPENDIX_Classic_OpenLane_Failure.md](./APPENDIX_Classic_OpenLane_Failure.md)  
+- [APPENDIX_Operational_Rules.md](./APPENDIX_Operational_Rules.md)
+
+---
+
+## Final Warning
+
+This repository is not friendly.  
+It is not flexible.  
 It is reliable.
 
-If you want novelty, leave.
+If you want novelty, leave.  
 If you want OpenLane to stop breaking, stay.
