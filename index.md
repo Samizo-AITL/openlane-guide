@@ -1,112 +1,85 @@
 # OpenLane Guide — Repository Index
 
-This repository is intentionally **linear**.  
-Do not treat it as a reference dump.
-
-If you read these documents **in order**, you will end with a
-**stable, reproducible, and portable OpenLane environment**.
-
-If you do not, you will break something.
+This repository must be read **in order**.
+It is intentionally strict.
 
 ---
 
-## Required Reading Order
+## Phase 1 — Environment Survival
 
-### 01 — Foundation (Do not skip)
-- **01_WSL_Docker_Setup.md**  
-  Establishes a WSL2 + Docker environment that can survive export/import.  
-  No OpenLane yet. Stability first.
+01. `01_WSL_Docker_Setup.md`  
+WSL2 and Docker done correctly, with export/import survivability.
 
-### 02 — Stable Production Flow
-- **02_OpenLane1_Setup.md**  
-  Installs and *freezes* OpenLane1.  
-  This is the production-grade flow.  
-  Updates are explicitly discouraged.
+02. `02_OpenLane1_Setup.md`  
+Install and freeze OpenLane1. This is the production flow.
 
-### 03 — Evaluation-Only Flow
-- **03_OpenLane2_Setup.md**  
-  OpenLane2 setup for experimentation only.  
-  Strict isolation rules are enforced.  
-  Never mix with OpenLane1.
+03. `03_OpenLane2_Setup.md`  
+OpenLane2 setup for evaluation only. Never mix.
 
-### 04 — The Asset
-- **04_PDK_Setup.md**  
-  sky130 / gf180 PDK setup.  
-  This is the most expensive and fragile asset.  
-  Built once. Never rebuilt.
+04. `04_PDK_Setup.md`  
+sky130 / gf180 PDK as an asset. Built once. Never rebuilt.
 
-### 05 — Proof of Correctness
-- **05_Verification_Test.md**  
-  Smoke tests to confirm:
-  - OpenLane completes
-  - PDK is correctly referenced
-  - Toolchain is intact
+05. `05_Verification_Test.md`  
+Smoke tests. Proof that the environment is real.
 
-### 06 — Disaster Recovery
-- **06_Migration_WSL_Export.md**  
-  Export / import strategy for WSL.  
-  Hardware failure becomes irrelevant.
+06. `06_Migration_WSL_Export.md`  
+Disaster recovery. Hardware failure becomes irrelevant.
 
-### 07 — Failure Prevention
-- **07_Troubleshooting.md**  
-  Not a fix-it guide.  
-  A checklist for **never breaking the environment again**.
+07. `07_Troubleshooting.md`  
+Failure prevention checklist. Not a fix guide.
 
 ---
 
-## Design Philosophy (Non-Negotiable)
+## Phase 2 — Physical Design Reality
 
-- Do not fix → **roll back**
-- Do not update → **clone**
-- Do not rebuild → **export/import**
-- The environment is an **asset**, not a workspace
+08. `08_Placement.md`  
+Global vs detailed placement. Density and convergence.
 
-If you violate these rules, failure is expected.
+09. `09_CTS.md`  
+Clock Tree Synthesis. Skew and insertion delay.
 
----
+10. `10_Routing.md`  
+Global and detailed routing. Congestion and DRC.
 
-## What This Repository Guarantees
+11. `11_DRC_LVS.md`  
+Magic DRC and Netgen LVS. What “clean” actually means.
 
-If followed exactly:
+12. `12_STA.md`  
+OpenSTA. WNS, TNS, setup and hold.
 
-- OpenLane runs end-to-end
-- GLS works (no unknown modules, no all-X)
-- STA / OpenROAD are usable
-- PDK mismatch errors disappear
-- Environment migration takes minutes, not days
-
-If something breaks:
-**you deviated from the process**.
+13. `13_GDS_Signoff.md`  
+Final deliverables: GDS, LEF, SPEF, SDF, SPICE.
 
 ---
 
-## Scope (Explicit)
+## Phase 3 — Integration and Verification
 
-Included:
-- OpenLane1
-- OpenLane2 (isolated)
-- sky130 / gf180
-- WSL2 + Docker Desktop
-- GLS (Icarus Verilog)
-- OpenROAD / OpenSTA
-- Magic / KLayout
-- WSL export/import disaster recovery
+14. `14_Caravel_Hardening.md`  
+User project integration and MPW preparation.
 
-Excluded by design:
-- Verilog tutorials
-- ASIC theory
-- Option encyclopedias
-- “Latest version” workflows
+15. `15_GLS.md`  
+Gate-level simulation. Functional and SDF.
+
+16. `16_EndToEnd_Exercise.md`  
+RTL → GDS → GLS → Caravel, end-to-end.
 
 ---
 
-## Final Warning
+## Appendices — Hard-earned knowledge
 
-This repository is not friendly.  
-It is not flexible.  
-It is not modern.
+- `APPENDIX_GLS_Failure_Patterns.md`
+- `APPENDIX_Magic_KLayout.md`
+- `APPENDIX_GDS_Analysis.md`
+- `APPENDIX_OpenROAD_Failures.md`
+- `APPENDIX_Layer_Mapping.md`
 
-It is **reliable**.
+---
 
-If you want novelty, look elsewhere.  
-If you want OpenLane to stop breaking, stay here.
+## Final warning
+
+This repository is not friendly.
+It is not flexible.
+It is reliable.
+
+If you want novelty, leave.
+If you want OpenLane to stop breaking, stay.
