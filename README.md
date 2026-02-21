@@ -134,3 +134,17 @@ it has already done its job.
 
 **Environment failures are optional.  
 This guide shows you how.**
+
+---
+
+## Appendices
+
+This repository also includes the following appendices:
+
+- `APPENDIX_OpenLane1_vs_OpenLane2_Separation.md`
+- `APPENDIX_PDK_Mismatch_Anatomy.md`
+- `APPENDIX_GLS_Failure_Patterns.md`
+- `APPENDIX_Classic_OpenLane_Failure.md`
+- `APPENDIX_Operational_Rules.md`
+
+These documents exist to explain **why things break**, not just how to run them.
