@@ -3,12 +3,12 @@ layout: default
 title: openlane-guide
 ---
 
-# OpenLane Guide — Repository Index
+# 🛠 OpenLane Guide — Repository Index
 
 This repository **must be read in order**.  
-It is intentionally strict.
+⚠️ It is **intentionally strict**.
 
-If you jump around, you will recreate the same failures this guide exists to prevent.
+If you jump around, you will **recreate the exact failures** this guide exists to prevent.
 
 [![Go to Portal (EN)](https://img.shields.io/badge/Go%20to%20Portal-6F42C1?style=for-the-badge&logo=homeassistant&logoColor=white)](https://samizo-aitl.github.io/portal/en/)
 
@@ -22,99 +22,78 @@ If you jump around, you will recreate the same failures this guide exists to pre
 
 ---
 
-## Phase 1 — Environment Survival (Mandatory)
+## 🧱 Phase 1 — Environment Survival (Mandatory)
 
-01. [01_WSL_Docker_Setup.md](./01_WSL_Docker_Setup.md)  
-WSL2 + Docker Desktop configured for stability and export/import survivability.
+> **Goal:**  
+> Build an OpenLane environment that **does not break**,  
+> **can be reproduced**, and **can be restored after failure**.
 
-02. [02_OpenLane1_Setup.md](./02_OpenLane1_Setup.md)  
-Install and **freeze** OpenLane1 (Makefile-based). This is the **production** flow.
-
-03. [03_OpenLane2_Setup.md](./03_OpenLane2_Setup.md)  
-Install OpenLane2 for **evaluation only**. Strict isolation. **Never mix with OpenLane1.**
-
-04. [04_PDK_Setup.md](./04_PDK_Setup.md)  
-PDK is the asset. Pin the version. Keep it in one place. **Build once. Never rebuild casually.**
-
-05. [05_Verification_Test.md](./05_Verification_Test.md)  
-Smoke tests proving the environment, PDK, and toolchain are correct.
-
-06. [06_Migration_WSL_Export.md](./06_Migration_WSL_Export.md)  
-Disaster recovery via WSL export/import. Hardware failure becomes irrelevant.
-
-07. [07_Troubleshooting.md](./07_Troubleshooting.md)  
-Failure prevention checklist. This is **not** a fix-it guide.
+| Step | Document | Purpose |
+|-----:|----------|---------|
+| 01 | [01_WSL_Docker_Setup.md](./01_WSL_Docker_Setup.md) | 🐧 WSL2 + Docker Desktop setup for stability and export/import survivability |
+| 02 | [02_OpenLane1_Setup.md](./02_OpenLane1_Setup.md) | 🧊 Install and **freeze** OpenLane1 (Makefile-based, production flow) |
+| 03 | [03_OpenLane2_Setup.md](./03_OpenLane2_Setup.md) | 🧪 OpenLane2 for **evaluation only** — strict isolation |
+| 04 | [04_PDK_Setup.md](./04_PDK_Setup.md) | 🧬 PDK is an **asset** — pin version, build once, never casually rebuild |
+| 05 | [05_Verification_Test.md](./05_Verification_Test.md) | ✅ Smoke tests proving toolchain, PDK, and environment correctness |
+| 06 | [06_Migration_WSL_Export.md](./06_Migration_WSL_Export.md) | ♻️ Disaster recovery via WSL export/import |
+| 07 | [07_Troubleshooting.md](./07_Troubleshooting.md) | 🧯 Failure **prevention** checklist (not a fix-it guide) |
 
 ---
 
-## Phase 2 — Physical Design Reality
+## 🧭 Phase 2 — Physical Design Reality
 
-08. [08_Placement.md](./08_Placement.md)  
-Placement fundamentals: density, legalization, convergence.
+> **Goal:**  
+> Understand where RTL assumptions **collapse into physical constraints**.
 
-09. [09_CTS.md](./09_CTS.md)  
-Clock Tree Synthesis: skew, insertion delay, and downstream impact.
-
-10. [10_Routing.md](./10_Routing.md)  
-Global and detailed routing: congestion, DRC pressure, failure points.
-
-11. [11_STA.md](./11_STA.md)  
-Static Timing Analysis: WNS/TNS, setup/hold, uncertainty, interpretation.
-
-12. [12_GLS.md](./12_GLS.md)  
-Gate-level simulation without SDF: what it proves and what it hides.
-
-13. [13_SDF_GLS.md](./13_SDF_GLS.md)  
-SDF-annotated GLS: timing becomes behavior.
+| Step | Document | Focus |
+|-----:|----------|-------|
+| 08 | [08_Placement.md](./08_Placement.md) | 📐 Placement fundamentals: density, legalization, convergence |
+| 09 | [09_CTS.md](./09_CTS.md) | ⏱ Clock Tree Synthesis: skew, insertion delay |
+| 10 | [10_Routing.md](./10_Routing.md) | 🧵 Global & detailed routing, congestion, DRC pressure |
+| 11 | [11_STA.md](./11_STA.md) | 📊 STA: WNS/TNS, setup/hold, uncertainty |
+| 12 | [12_GLS.md](./12_GLS.md) | 🔍 Gate-level simulation **without SDF** — limits and blind spots |
+| 13 | [13_SDF_GLS.md](./13_SDF_GLS.md) | ⏳ SDF-annotated GLS — timing becomes behavior |
 
 ---
 
-## Phase 3 — Integration and Timing Truth
+## 🔗 Phase 3 — Integration and Timing Truth
 
-14. [14_OpenROAD_STA.md](./14_OpenROAD_STA.md)  
-Using OpenROAD and STA together without dead ends.
+> **Goal:**  
+> Align **tool output**, **timing analysis**, and **physical reality**.
 
-15. [15_Routing_and_Congestion.md](./15_Routing_and_Congestion.md)  
-Congestion analysis and routing strategy.
-
-16. [16_GLS_and_SDF.md](./16_GLS_and_SDF.md)  
-RTL vs GLS vs SDF-GLS: what “matches” actually means.
-
-17. [17_Magic_KLayout_Reality_Check.md](./17_Magic_KLayout_Reality_Check.md)  
-What layout viewers show—and what they never will.
-
-18. [18_STA_Reality_and_Timing_Closure.md](./18_STA_Reality_and_Timing_Closure.md)  
-Timing closure mindset and rollback discipline.
-
-19. [19_GLS_SDF_Timing.md](./19_GLS_SDF_Timing.md)  
-Timing failure signatures visible only in waveforms.
-
-20. [20_Environment_Failure_Model.md](./20_Environment_Failure_Model.md)  
-Why OpenLane environments collapse in practice.
-
-21. [21_Final_Rules_of_Survival.md](./21_Final_Rules_of_Survival.md)  
-Non-negotiable rules for long-term survival.
+| Step | Document | Insight |
+|-----:|----------|---------|
+| 14 | [14_OpenROAD_STA.md](./14_OpenROAD_STA.md) | 🧠 Using OpenROAD + STA without dead ends |
+| 15 | [15_Routing_and_Congestion.md](./15_Routing_and_Congestion.md) | 🚦 Congestion analysis and routing strategy |
+| 16 | [16_GLS_and_SDF.md](./16_GLS_and_SDF.md) | 🔁 RTL vs GLS vs SDF-GLS — what “matches” means |
+| 17 | [17_Magic_KLayout_Reality_Check.md](./17_Magic_KLayout_Reality_Check.md) | 🪞 What layout viewers show — and hide |
+| 18 | [18_STA_Reality_and_Timing_Closure.md](./18_STA_Reality_and_Timing_Closure.md) | 🧩 Timing closure mindset and rollback discipline |
+| 19 | [19_GLS_SDF_Timing.md](./19_GLS_SDF_Timing.md) | 📉 Timing failure signatures visible only in waveforms |
+| 20 | [20_Environment_Failure_Model.md](./20_Environment_Failure_Model.md) | 💥 Why OpenLane environments collapse |
+| 21 | [21_Final_Rules_of_Survival.md](./21_Final_Rules_of_Survival.md) | 🛡 Non-negotiable survival rules |
 
 ---
 
-## Appendices — Hard-Earned Knowledge
+## 📚 Appendices — Hard-Earned Knowledge
 
-- [APPENDIX_GLS_Failure_Patterns.md](./APPENDIX_GLS_Failure_Patterns.md)  
-- [APPENDIX_PDK_Mismatch_Anatomy.md](./APPENDIX_PDK_Mismatch_Anatomy.md)  
-- [APPENDIX_OpenLane1_vs_OpenLane2_Separation.md](./APPENDIX_OpenLane1_vs_OpenLane2_Separation.md)  
-- [APPENDIX_Classic_OpenLane_Failure.md](./APPENDIX_Classic_OpenLane_Failure.md)  
-- [APPENDIX_Operational_Rules.md](./APPENDIX_Operational_Rules.md)
+> Real failures. Real scars. No theory.
+
+- 📌 [APPENDIX_GLS_Failure_Patterns.md](./APPENDIX_GLS_Failure_Patterns.md)
+- 📌 [APPENDIX_PDK_Mismatch_Anatomy.md](./APPENDIX_PDK_Mismatch_Anatomy.md)
+- 📌 [APPENDIX_OpenLane1_vs_OpenLane2_Separation.md](./APPENDIX_OpenLane1_vs_OpenLane2_Separation.md)
+- 📌 [APPENDIX_Classic_OpenLane_Failure.md](./APPENDIX_Classic_OpenLane_Failure.md)
+- 📌 [APPENDIX_Operational_Rules.md](./APPENDIX_Operational_Rules.md)
 
 ---
 
-## Final Warning
+## ⚠️ Final Warning
 
-This repository is not friendly.  
-It is not flexible.  
-It is reliable.
+This repository is **not friendly**.  
+It is **not flexible**.  
+It is **reliable**.
 
-If you want novelty, leave.  
-If you want OpenLane to stop breaking, stay.
+If you want novelty, **leave**.  
+If you want OpenLane to **stop breaking**, **stay**.
 
 ---
 
