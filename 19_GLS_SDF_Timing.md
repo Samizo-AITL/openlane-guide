@@ -1,4 +1,4 @@
-# 19_GLS_SDF_Timing
+# 19_GLS_SDF_Timing.md
 **Timing in Motion**
 
 ---
@@ -46,6 +46,7 @@ Plain GLS (without SDF):
 But it **lies about timing**.
 
 Without SDF:
+
 - Zero-delay gates
 - Ideal wires
 - Unrealistic alignment
@@ -57,11 +58,13 @@ It is necessary, but insufficient.
 ## What SDF GLS Reveals That STA Cannot
 
 STA reports:
+
 - Numbers
 - Paths
 - Margins
 
 SDF GLS reveals:
+
 - Glitches
 - Metastability windows
 - Race conditions
@@ -103,3 +106,109 @@ iverilog -g2012 -DSDF_ANNOTATE \
   sky130_fd_sc_hd.v \
   design.gl.v tb.v \
   -o sim.out
+```
+
+Execution:
+
+```bash
+vvp sim.out +sdf_annotate+design.sdf
+```
+
+No SDF flag means **no timing truth**.
+
+---
+
+## Clock Alignment Matters
+
+In SDF GLS:
+
+- Clock edges are delayed
+- Clock skew is real
+- Launch and capture clocks differ
+
+If your testbench assumes an ideal clock,
+your results are meaningless.
+
+Always treat the clock as part of the design.
+
+---
+
+## Why Waveforms Look “Ugly”
+
+Real waveforms include:
+
+- Glitches
+- Uneven delays
+- Skew-induced shifts
+- Non-symmetric transitions
+
+This is not noise.  
+This is reality.
+
+Clean waveforms belong to RTL, not silicon.
+
+---
+
+## Common Misinterpretations
+
+### “The waveform is broken”
+No. The design is broken.
+
+### “GTKWave looks wrong”
+GTKWave is innocent.
+
+### “RTL worked”
+Irrelevant.
+
+---
+
+## Debugging with SDF GLS
+
+Recommended approach:
+
+1. Identify the failing cycle
+2. Trace back to the register capture
+3. Observe data arrival vs clock edge
+4. Compare with STA critical path
+5. Fix timing, not the testbench
+
+Never mask the symptom.
+
+---
+
+## When to Use SDF GLS
+
+Use it when:
+
+- STA shows marginal slack
+- You suspect hold violations
+- Functional failures appear post-route
+- Verifying timing ECO fixes
+
+Do **not** use it as a replacement for STA.
+
+---
+
+## Performance Reality
+
+SDF GLS is slow by design.  
+Speed is sacrificed for correctness.
+
+---
+
+## Chapter Conclusion
+
+- STA reports timing margins
+- SDF GLS shows timing behavior
+- Both describe the same physics
+
+If STA and GLS disagree,
+one of them is misunderstood.
+
+---
+
+## Next Chapter
+
+👉 **20_Environment_Failure_Model.md**
+
+---
