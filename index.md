@@ -10,6 +10,16 @@ It is intentionally strict.
 
 If you jump around, you will recreate the same failures this guide exists to prevent.
 
+[![Go to Portal (EN)](https://img.shields.io/badge/Go%20to%20Portal-6F42C1?style=for-the-badge&logo=homeassistant&logoColor=white)](https://samizo-aitl.github.io/portal/en/)
+
+---
+
+## 🔗 Links
+
+| Language | GitHub Pages 🌐 | GitHub 💻 |
+|----------|----------------|-----------|
+| EN English | [![GitHub Pages EN](https://img.shields.io/badge/GitHub%20Pages-English-brightgreen?logo=github)](https://samizo-aitl.github.io/openlane-guide/) | [![GitHub Repo EN](https://img.shields.io/badge/GitHub-English-blue?logo=github)](https://github.com/Samizo-AITL/openlane-guide) |
+
 ---
 
 ## Phase 1 — Environment Survival (Mandatory)
