@@ -1,150 +1,82 @@
 # openlane-guide
 
-> **Read this repository and stop breaking your OpenLane environment forever.**
+> Read this repository and stop breaking your OpenLane environment forever.
 
-This repository is a **battle-tested, failure-driven guide** for running OpenLane  
-in a **stable, reproducible, and disaster-proof way**.
+This repository is a battle-tested, failure-driven guide for running OpenLane
+in a stable, reproducible, and disaster-proof way.
 
-It is not a feature list.  
-It is not a quick-start blog post.
+This is not a quick-start.
+This is not a feature reference.
 
-This guide exists for one reason only:
-
-> **So you never waste time rebuilding a broken OpenLane environment again.**
+This repository exists because real environments were broken.
 
 ---
 
-## What this guide is
+## What this repository contains
 
-This repository documents **what actually works** after real-world failures involving:
+This repository contains the **entire OpenLane reality**, including:
 
-- WSL2 + Docker instability
-- PDK version mismatches
-- OpenLane1 vs OpenLane2 confusion
-- GLS failures (unknown modules, all-X waveforms)
-- STA / OpenROAD dead ends
-- Environment corruption after updates
-- Irrecoverable Classic OpenLane setups
+- WSL2 + Docker environment survival
+- OpenLane1 vs OpenLane2 coexistence
+- PDK asset management (sky130 / gf180)
+- Full physical design flow
+- Placement, CTS, Routing
+- DRC / LVS / STA
+- GDS signoff
+- GLS (functional and SDF)
+- Caravel hardening
+- End-to-end RTL → GDS → GLS → MPW
+- Failure cases and irreversible mistakes
+- Disaster recovery by WSL export/import
 
-Everything here is written from one perspective only:
-
-> **“How do I make sure this never breaks again?”**
-
-This is not theoretical advice.  
-Every rule here exists because something *already failed*.
-
----
-
-## What this guide is NOT
-
-- ❌ Verilog language tutorial  
-- ❌ ASIC theory textbook  
-- ❌ OpenLane option reference  
-- ❌ “Latest version” chasing guide  
-
-If you want syntax or theory, plenty of resources already exist.
-
-This guide focuses on **operational survival**.
+Nothing here is theoretical.
+Every file exists because something failed before.
 
 ---
 
-## Who this guide is for
+## How to read this repository
 
-This guide is for:
+This repository is **linear**.
 
-- Engineers who already tried OpenLane and got burned
-- People who want **reproducibility**, not novelty
-- Anyone who values **environment stability over updates**
-- Those who want to understand *why* things break, not just *how* to run commands
+You are expected to read files in order.
+Skipping steps guarantees failure.
 
-If you have never broken OpenLane before:  
-you probably will — unless you read this first.
+Start with:
 
----
-
-## How to read this repository (IMPORTANT)
-
-This is **not a reference manual**.  
-**Order matters.**
-
-Recommended reading order:
-
-1. `01_WSL_Docker_Setup.md`  
-2. `02_OpenLane1_Setup.md`  
-3. `03_OpenLane2_Setup.md`  
-4. `04_PDK_Setup.md`  
-5. `05_Verification_Test.md`  
-6. `06_Migration_WSL_Export.md`  
-7. `07_Troubleshooting.md`
-
-Skipping steps defeats the entire purpose of this guide.
+- `INDEX.md`
 
 ---
 
-## Core philosophy
+## Core rules
 
-This repository is built on a few non-negotiable rules:
+- Do not fix. Roll back.
+- Do not update. Clone.
+- Do not rebuild. Export & import.
+- Your environment is an asset, not a workspace.
 
-- **Do not fix. Roll back.**
-- **Do not update. Clone.**
-- **Do not rebuild. Export & import.**
-- **Your environment is an asset, not a workspace.**
-
-Once you adopt this mindset, OpenLane stops being “difficult”.
+If you violate these rules, failure is expected.
 
 ---
 
-## Supported scope
+## Scope
 
-This guide explicitly covers:
-
-- OpenLane1 (Makefile-based, stable, production-oriented)
-- OpenLane2 (evaluation-only, fully isolated)
-- sky130 / gf180 PDK
+Included:
+- OpenLane1 (stable)
+- OpenLane2 (evaluation-only)
+- sky130 / gf180
 - WSL2 + Docker Desktop
 - GLS (Icarus Verilog)
 - OpenROAD / OpenSTA
 - Magic / KLayout
-- Disaster recovery via WSL export/import
+- Caravel / MPW flow
 
-Anything outside this scope is intentionally excluded.
-
----
-
-## Repository guarantee
-
-If you follow this repository **in order**, you will get:
-
-- A working OpenLane environment
-- A reproducible setup you can migrate in minutes
-- A flow that survives OS, Docker, and hardware failures
-
-If something breaks, the problem is **not** OpenLane.
-
-It is deviation from this guide.
+Excluded by design:
+- Verilog tutorials
+- ASIC theory textbooks
+- Option encyclopedias
+- “Latest version” workflows
 
 ---
 
-## Final note
-
-If this repository saves you **even one full reinstall**,  
+If this repository saves you even one full reinstall,
 it has already done its job.
-
----
-
-**Environment failures are optional.  
-This guide shows you how.**
-
----
-
-## Appendices
-
-This repository also includes the following appendices:
-
-- `APPENDIX_OpenLane1_vs_OpenLane2_Separation.md`
-- `APPENDIX_PDK_Mismatch_Anatomy.md`
-- `APPENDIX_GLS_Failure_Patterns.md`
-- `APPENDIX_Classic_OpenLane_Failure.md`
-- `APPENDIX_Operational_Rules.md`
-
-These documents exist to explain **why things break**, not just how to run them.
