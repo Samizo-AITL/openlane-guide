@@ -1,3 +1,8 @@
+---
+layout: default
+title: openlane-guide
+---
+
 # OpenLane Guide — Repository Index
 
 This repository **must be read in order**.  
