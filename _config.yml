@@ -1,9 +1,9 @@
-title: "qiita-articles" 
-description: "qiita-articles"
+title: "openlane-guide" 
+description: "openlane-guide"
 lang: ja
 
 url: "https://samizo-aitl.github.io"
-baseurl: "/qiita-articles"
+baseurl: "/openlane-guide"
 
 # テーマは使わない（完全自作）
 theme: null
